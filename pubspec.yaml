@@ -1,0 +1,55 @@
+name: olako
+description: A reader for Word, PowerPoint, PDF, Excel, OpenDocument, Markdown, text and CSV files.
+publish_to: 'none'
+version: 1.0.0
+repository: https://github.com/psdkjoon/olako
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_svg: ^2.0.10
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/icons/coins/
+
+  fonts:
+    - family: SpaceGrotesk
+      fonts:
+        - asset: assets/fonts/SpaceGrotesk-Variable.ttf
+          weight: 400
+        - asset: assets/fonts/SpaceGrotesk-Variable.ttf
+          weight: 500
+        - asset: assets/fonts/SpaceGrotesk-Variable.ttf
+          weight: 600
+        - asset: assets/fonts/SpaceGrotesk-Variable.ttf
+          weight: 700
+    - family: NotoSans
+      fonts:
+        - asset: assets/fonts/noto/NotoSans-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/noto/NotoSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/noto/NotoSans-Bold.ttf
+          weight: 700
+    - family: NotoSansArabic
+      fonts:
+        - asset: assets/fonts/noto/NotoSansArabic-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/noto/NotoSansArabic-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/noto/NotoSansArabic-Bold.ttf
+          weight: 700
+    - family: NotoSansJP
+      fonts:
+        - asset: assets/fonts/noto/NotoSansJP-Regular.otf
+          weight: 400
+        - asset: assets/fonts/noto/NotoSansJP-Bold.otf
+          weight: 700

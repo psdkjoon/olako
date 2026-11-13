@@ -1,0 +1,539 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32"/>
+
+    <application
+        android:label="@string/app_name"
+        android:name=".MainApplication"
+        android:requestLegacyExternalStorage="true"
+        android:allowBackup="false"
+        android:icon="${appIcon}">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="true"
+            android:windowSoftInputMode="adjustResize">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <data android:scheme="${deepLinkScheme}-launch"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="${deepLinkScheme}"/>
+            </intent-filter>
+
+            <meta-data
+              android:name="io.flutter.embedding.android.NormalTheme"
+              android:resource="@style/NormalTheme"
+              />
+        </activity>
+        <activity
+            android:name=".ViewerActivity"
+            android:exported="true"
+            android:launchMode="standard"
+            android:taskAffinity="${applicationId}.viewer"
+            android:excludeFromRecents="true"
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="true"
+            android:windowSoftInputMode="adjustResize">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="content"/>
+                <data android:scheme="file"/>
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.presentationml.presentation"/>
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+                <data android:mimeType="application/vnd.oasis.opendocument.text"/>
+                <data android:mimeType="application/pdf"/>
+                <data android:mimeType="text/markdown"/>
+                <data android:mimeType="text/x-markdown"/>
+                <data android:mimeType="text/x-web-markdown"/>
+                <data android:mimeType="text/plain"/>
+                <data android:mimeType="text/csv"/>
+                <data android:mimeType="text/comma-separated-values"/>
+                <data android:mimeType="text/tab-separated-values"/>
+                <data android:mimeType="application/csv"/>
+                <data android:mimeType="application/octet-stream"/>
+                <data android:mimeType="application/zip"/>
+                <data android:mimeType="application/x-zip-compressed"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="content"/>
+                <data android:scheme="file"/>
+                <data android:host="*"/>
+                <data android:mimeType="*/*"/>
+                <data android:pathPattern=".*\\.docx"/>
+                <data android:pathPattern=".*\\..*\\.docx"/>
+                <data android:pathPattern=".*\\..*\\..*\\.docx"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.docx"/>
+                <data android:pathPattern=".*\\.pptx"/>
+                <data android:pathPattern=".*\\..*\\.pptx"/>
+                <data android:pathPattern=".*\\..*\\..*\\.pptx"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.pptx"/>
+                <data android:pathPattern=".*\\.md"/>
+                <data android:pathPattern=".*\\..*\\.md"/>
+                <data android:pathPattern=".*\\..*\\..*\\.md"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.md"/>
+                <data android:pathPattern=".*\\.markdown"/>
+                <data android:pathPattern=".*\\..*\\.markdown"/>
+                <data android:pathPattern=".*\\..*\\..*\\.markdown"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.markdown"/>
+                <data android:pathPattern=".*\\.pdf"/>
+                <data android:pathPattern=".*\\..*\\.pdf"/>
+                <data android:pathPattern=".*\\..*\\..*\\.pdf"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.pdf"/>
+                <data android:pathPattern=".*\\.txt"/>
+                <data android:pathPattern=".*\\..*\\.txt"/>
+                <data android:pathPattern=".*\\..*\\..*\\.txt"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.txt"/>
+                <data android:pathPattern=".*\\.csv"/>
+                <data android:pathPattern=".*\\..*\\.csv"/>
+                <data android:pathPattern=".*\\..*\\..*\\.csv"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.csv"/>
+                <data android:pathPattern=".*\\.tsv"/>
+                <data android:pathPattern=".*\\..*\\.tsv"/>
+                <data android:pathPattern=".*\\..*\\..*\\.tsv"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.tsv"/>
+                <data android:pathPattern=".*\\.odt"/>
+                <data android:pathPattern=".*\\..*\\.odt"/>
+                <data android:pathPattern=".*\\..*\\..*\\.odt"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.odt"/>
+                <data android:pathPattern=".*\\.xlsx"/>
+                <data android:pathPattern=".*\\..*\\.xlsx"/>
+                <data android:pathPattern=".*\\..*\\..*\\.xlsx"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.xlsx"/>
+                <data android:pathPattern=".*\\.log"/>
+                <data android:pathPattern=".*\\..*\\.log"/>
+                <data android:pathPattern=".*\\..*\\..*\\.log"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.log"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="content"/>
+                <data android:scheme="file"/>
+                <data android:host="*"/>
+                <data android:pathPattern=".*\\.docx"/>
+                <data android:pathPattern=".*\\..*\\.docx"/>
+                <data android:pathPattern=".*\\..*\\..*\\.docx"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.docx"/>
+                <data android:pathPattern=".*\\.pptx"/>
+                <data android:pathPattern=".*\\..*\\.pptx"/>
+                <data android:pathPattern=".*\\..*\\..*\\.pptx"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.pptx"/>
+                <data android:pathPattern=".*\\.md"/>
+                <data android:pathPattern=".*\\..*\\.md"/>
+                <data android:pathPattern=".*\\..*\\..*\\.md"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.md"/>
+                <data android:pathPattern=".*\\.markdown"/>
+                <data android:pathPattern=".*\\..*\\.markdown"/>
+                <data android:pathPattern=".*\\..*\\..*\\.markdown"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.markdown"/>
+                <data android:pathPattern=".*\\.pdf"/>
+                <data android:pathPattern=".*\\..*\\.pdf"/>
+                <data android:pathPattern=".*\\..*\\..*\\.pdf"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.pdf"/>
+                <data android:pathPattern=".*\\.txt"/>
+                <data android:pathPattern=".*\\..*\\.txt"/>
+                <data android:pathPattern=".*\\..*\\..*\\.txt"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.txt"/>
+                <data android:pathPattern=".*\\.csv"/>
+                <data android:pathPattern=".*\\..*\\.csv"/>
+                <data android:pathPattern=".*\\..*\\..*\\.csv"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.csv"/>
+                <data android:pathPattern=".*\\.tsv"/>
+                <data android:pathPattern=".*\\..*\\.tsv"/>
+                <data android:pathPattern=".*\\..*\\..*\\.tsv"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.tsv"/>
+                <data android:pathPattern=".*\\.odt"/>
+                <data android:pathPattern=".*\\..*\\.odt"/>
+                <data android:pathPattern=".*\\..*\\..*\\.odt"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.odt"/>
+                <data android:pathPattern=".*\\.xlsx"/>
+                <data android:pathPattern=".*\\..*\\.xlsx"/>
+                <data android:pathPattern=".*\\..*\\..*\\.xlsx"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.xlsx"/>
+                <data android:pathPattern=".*\\.log"/>
+                <data android:pathPattern=".*\\..*\\.log"/>
+                <data android:pathPattern=".*\\..*\\..*\\.log"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.log"/>
+            </intent-filter>
+
+            <meta-data
+              android:name="io.flutter.embedding.android.NormalTheme"
+              android:resource="@style/NormalTheme"
+              />
+        </activity>
+
+        <activity-alias
+            android:name=".IconRosewaterMocha"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_rosewater_mocha"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconRosewaterLatte"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_rosewater_latte"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconFlamingoMocha"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_flamingo_mocha"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconFlamingoLatte"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_flamingo_latte"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconPinkMocha"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_pink_mocha"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconPinkLatte"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_pink_latte"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconMauveMocha"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mauve_mocha"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconMauveLatte"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mauve_latte"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconRedMocha"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_red_mocha"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconRedLatte"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_red_latte"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconPeachMocha"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_peach_mocha"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconPeachLatte"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_peach_latte"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconYellowMocha"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_yellow_mocha"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconYellowLatte"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_yellow_latte"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconGreenMocha"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_green_mocha"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconGreenLatte"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_green_latte"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconTealMocha"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_teal_mocha"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconTealLatte"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_teal_latte"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconSkyMocha"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_sky_mocha"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconSkyLatte"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_sky_latte"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconBlueMocha"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_blue_mocha"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconBlueLatte"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_blue_latte"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconLavenderMocha"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_lavender_mocha"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconLavenderLatte"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_lavender_latte"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".ShareTarget"
+            android:enabled="true"
+            android:exported="true"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="application/pdf"/>
+                <data android:mimeType="text/*"/>
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.presentationml.presentation"/>
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+                <data android:mimeType="application/vnd.oasis.opendocument.text"/>
+                <data android:mimeType="application/octet-stream"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="application/pdf"/>
+                <data android:mimeType="text/*"/>
+                <data android:mimeType="application/octet-stream"/>
+            </intent-filter>
+        </activity-alias>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.updates"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/update_file_paths"/>
+        </provider>
+
+        <provider
+            android:name=".ThemeSyncProvider"
+            android:authorities="${applicationId}.themesync"
+            android:exported="true"
+            android:process=":sync">
+            <intent-filter>
+                <action android:name="ir.psdkjoon.action.THEME_SYNC"/>
+            </intent-filter>
+        </provider>
+
+        <receiver
+            android:name=".ThemeSyncReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="ir.psdkjoon.action.THEME_SYNC_POKE"/>
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+    </application>
+
+    <queries>
+        <intent>
+            <action android:name="ir.psdkjoon.action.THEME_SYNC"/>
+        </intent>
+    </queries>
+</manifest>
